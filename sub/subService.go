@@ -78,6 +78,8 @@ func (s *SubService) GetSubs(subId string, host string) ([]string, int64, xray.C
 			if client.Enable && client.SubID == subId {
 				link := s.getLink(inbound, client.Email)
 				result = append(result, link)
+				copiedLink := s.createModifiedLink(link, "77.239.104.148", "apple.com")
+				result = append(result, copiedLink)
 				ct := s.getClientTraffics(inbound.ClientStats, client.Email)
 				clientTraffics = append(clientTraffics, ct)
 				if ct.LastOnline > lastOnline {
